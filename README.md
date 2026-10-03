@@ -1,6 +1,6 @@
-Big-O Complexity — Variant 3
+# Big-O Complexity — Variant 3
 
-Comparing Growth Rates on the Same Plot
+## Comparing Growth Rates on the Same Plot
 
 This project experimentally compares different algorithmic complexity classes using identical input sequences.
 
@@ -8,7 +8,7 @@ The goal is to visualize how varying growth rates respond to increasing input si
 
 ---
 
-Algorithms
+## Algorithms
 
 Four workloads with different complexity classes are evaluated:
 
@@ -27,7 +27,7 @@ O(1) < O(log n) < O(n) < O(n2)
 
 ---
 
-Experimental Objective
+## Experimental Objective
 
 The experiment addresses the following question:
 
@@ -52,7 +52,7 @@ This enables a direct comparison of their growth rates.
 
 ---
 
-Measurement Methodology
+## Measurement Methodology
 
 Execution time is measured using:
 
