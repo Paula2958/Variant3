@@ -1,0 +1,147 @@
+Variant 3 - Comparing Growth Rates on the Same Plot.
+Big Data - Data Science and Engineering
+Academic Year 2026-2027
+
+Execution environment:
+Java: OpenJDK 21. 0. 11
+Operating System: Linux 64-bit
+Timer: System. nanoTime()
+
+Measurement methodology:
+- The same input sizes were applied to all four complexity classes.
+- 10 JVM warm-up executions were performed before measurement.
+- 7 measured samples were collected for each configuration.
+- The median execution time was retained.
+- Batches of O(1) and O(log n) operations were executed to minimize timer overhead.
+- A volatile result sink was employed to stop the JVM from eliminating unused computations.
+- Execution times are reported in nanoseconds.
+
+Algorithms / workloads:
+O(1)     - Constant Operation
+O(log n) - Binary Search
+O(n)     - Linear Workload
+O(n^2)   - Nested Loops
+
+Common input sequence:
+100
+250
+500
+1000
+2000
+4000
+8000
+12000
+16000
+20000
+
+
+============================================================
+MEASURED RESULTS:
+
+n,O(1)_ns,O(log_n)_ns,O(n)_ns,O(n^2)_ns
+100,0. 751,6. 244,41. 792,3196. 172
+250,1. 021,5. 212,76. 592,19770. 313
+500,0. 756,5. 654,142. 784,84004. 188
+1000,0. 746,6. 054,285. 289,319548. 500
+2000,0. 749,6. 612,563. 904,1247664
+4000,0. 759,7. 585,1157. 271,5243401
+8000,0. 773,8. 143,2243. 576,20714216
+12000,0. 755,8. 554,3333. 608,45659515
+16000,0. 738,8. 552,4431. 387,80595716
+20000,0. 736,9. 121,5593. 215,125798075
+
+
+============================================================
+SUMMARY:
+
+
+At n = 100:
+O(1)     = 0. 751 ns
+O(log n) = 6. 244 ns
+O(n)     = 41. 792 ns
+O(n^2)   = 3,196. 172 ns
+
+At n = 20,000:
+O(1)     = 0. 736 ns
+O(log n) = 9. 121 ns
+O(n)     = 5,593. 215 ns
+O(n^2)   = 125,798,075 ns
+
+
+============================================================
+GROWTH COMPARISON:
+
+
+The measured results reveal four distinctly different growth patterns.
+
+O(1):
+The workload remains approximately constant as n increases.
+Its execution time does not systematically depend on the input size.
+
+O(log n):
+Binary Search grows very slowly because the remaining search space is halved with each step.
+approximately halved after every comparison.
+
+O(n):
+The linear workload increases approximately in proportion to the input.
+This is because one operation is executed for each iteration.
+
+O(n^2):
+The nested-loop workload increases much more rapidly because the number of iterations grows exponentially.
+The operations scale proportionally to the square of the input size.
+
+
+============================================================
+SEPARATION BETWEEN COMPLEXITY CLASSES:
+
+
+At n = 100:
+
+O(n^2) / O(n)
+= 3196. 172 / 41. 792
+≈ 76. 5
+
+The quadratic workload is approximately 77 times slower than the linear workload.
+linear workload.
+
+At n = 20,000:
+
+O(n^2) / O(n)
+= 125798075 / 5593. 215
+≈ 22491
+
+The quadratic workload is approximately 22,491 times slower than the linear workload.
+linear workload.
+
+Therefore, there is no literal crossover between O(n) and O(n^2).
+Within the selected input range, as the quadratic workload is.
+already slower at the smallest measured input.
+
+Instead, the experiment demonstrates an increasingly large separation
+between the two growth rates as n increases.
+
+
+============================================================
+THEORETICAL COMPARISON:
+
+
+The expected theoretical growth functions are:
+
+O(1)     -> 1
+O(log n) -> log2(n)
+O(n)     -> n
+O(n^2)   -> n^2
+
+The empirical measurements follow the expected qualitative ordering:
+
+O(1) < O(log n) < O(n) < O(n^2)
+
+The precise execution times vary depending on the implementation, JVM, and hardware.
+cache behaviour, operating-system scheduling and other constant
+factors. Therefore, the individual nanosecond measurements should not
+be interpreted as universal execution times.
+
+The key finding is the growth pattern observed as n increases.
+The experiment demonstrates that algorithms with higher asymptotic complexity perform less efficiently.
+become increasingly expensive relative to algorithms with lower
+complexity as the input size grows.
