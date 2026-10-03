@@ -57,7 +57,7 @@ This enables a direct comparison of their growth rates.
 Execution time is measured using:
 
 ```java
-System. nanoTime()
+System.nanoTime()
 ```
 
 The benchmark incorporates multiple metrics designed to enhance the reliability of the experiment.
